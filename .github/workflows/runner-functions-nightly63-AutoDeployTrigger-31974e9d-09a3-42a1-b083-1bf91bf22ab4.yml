@@ -4,15 +4,14 @@ name: Trigger auto deployment for runner-functions-nightly63
 on:
   # Automatically trigger it when detected changes in repo
   push:
-    branches: 
-      [ main ]
+    branches: [main]
     paths:
-    - '**'
-    - '.github/workflows/runner-functions-nightly63-AutoDeployTrigger-31974e9d-09a3-42a1-b083-1bf91bf22ab4.yml'
+      - "**"
+      - ".github/workflows/runner-functions-nightly63-AutoDeployTrigger-31974e9d-09a3-42a1-b083-1bf91bf22ab4.yml"
 
-  # Allow manual trigger 
+  # Allow manual trigger
   workflow_dispatch:
-      
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -37,9 +36,4 @@ jobs:
           registryPassword: ${{ secrets.RUNNERFUNCTIONSNIGHTLY63_REGISTRY_PASSWORD }}
           containerAppName: runner-functions-nightly63
           resourceGroup: swiftfiddle
-          imageToBuild: kishikawakatsumi/runner-functions-nightly63:${{ github.sha }}
-          
-            
-
-     
-
+          imageToBuild: swiftfiddle/runner-functions-nightly63:latest
